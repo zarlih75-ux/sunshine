@@ -1,0 +1,302 @@
+@charset "UTF-8";
+
+/* ------------------------------------------------------------------
+   カラーとフォントの設定。ここを書き換えると全体の印象が変わります
+   ------------------------------------------------------------------ */
+:root {
+  --paper:      #fbf8f3;  /* 背景 */
+  --paper-deep: #f2ece1;  /* 一段落とした背景 */
+  --ink:        #33231a;  /* 本文 */
+  --ink-light:  #7a6757;  /* 補足の文字 */
+  --copper:     #a8541f;  /* 差し色（見出し・リンク） */
+  --leaf:       #5c6b4a;  /* 副の差し色（豆の販売） */
+  --rule:       #e2d8c8;  /* 罫線 */
+
+  --font-serif: "Zen Old Mincho", "Yu Mincho", serif;
+  --font-sans:  "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+
+  --width: 44rem;
+}
+
+/* ------------------------------------------------------------------
+   全体
+   ------------------------------------------------------------------ */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--copper); }
+
+a:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------------
+   ヘッダー
+   ------------------------------------------------------------------ */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-header nav ul {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.site-header nav a {
+  color: var(--ink-light);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.site-header nav a:hover {
+  color: var(--copper);
+  border-bottom-color: var(--copper);
+}
+
+/* ------------------------------------------------------------------
+   ヒーロー（最初に目に入る部分）
+   ------------------------------------------------------------------ */
+.hero {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  border-top: 1px solid var(--rule);
+}
+
+.hero-sub {
+  margin: 0 0 1.5rem;
+  color: var(--copper);
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+}
+
+.hero h1 {
+  margin: 0 0 1.75rem;
+  font-size: clamp(2.25rem, 8vw, 3.5rem);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.hero-text {
+  max-width: 30rem;
+  margin: 0 0 2rem;
+  color: var(--ink-light);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: var(--copper);
+  color: var(--paper);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.button:hover { background: #8e4417; }
+
+/* ------------------------------------------------------------------
+   共通のセクション
+   ------------------------------------------------------------------ */
+.section {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+.section > h2 {
+  margin: 0 0 2rem;
+  font-size: 1.5rem;
+}
+
+.section h3 {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.0625rem;
+  color: var(--copper);
+}
+
+.section h3:first-of-type { margin-top: 0; }
+
+/* ------------------------------------------------------------------
+   メニュー（品名と値段を左右に振り分け、点線でつなぐ）
+   ------------------------------------------------------------------ */
+.menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 0.75rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.menu-list .item { font-size: 1.0625rem; }
+
+.menu-list .price {
+  font-family: var(--font-serif);
+  white-space: nowrap;
+}
+
+.menu-list .note {
+  grid-column: 1 / -1;
+  color: var(--ink-light);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ------------------------------------------------------------------
+   豆の販売
+   ------------------------------------------------------------------ */
+.beans { background: var(--paper-deep); max-width: none; }
+
+.beans > * { max-width: var(--width); margin-left: auto; margin-right: auto; }
+
+.beans h2 { color: var(--leaf); }
+
+.beans-list {
+  margin: 2rem auto 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.beans-list li {
+  padding-left: 1rem;
+  border-left: 2px solid var(--leaf);
+}
+
+.beans-list h4 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.beans-list p {
+  margin: 0;
+  color: var(--ink-light);
+  font-size: 0.9375rem;
+}
+
+.beans-list .price {
+  margin-top: 0.25rem;
+  color: var(--ink);
+  font-family: var(--font-serif);
+}
+
+/* ------------------------------------------------------------------
+   店舗案内
+   ------------------------------------------------------------------ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2.5rem;
+}
+
+.info-grid > div > h3 { margin-top: 0; }
+
+.hours {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.hours th,
+.hours td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-weight: 400;
+  text-align: left;
+}
+
+.hours th { color: var(--ink-light); }
+.hours td { text-align: right; }
+
+.small {
+  color: var(--ink-light);
+  font-size: 0.8125rem;
+}
+
+/* ------------------------------------------------------------------
+   フッター
+   ------------------------------------------------------------------ */
+.site-footer {
+  padding: 2.5rem 1.25rem;
+  background: var(--ink);
+  color: var(--paper-deep);
+  text-align: center;
+}
+
+.footer-logo {
+  margin: 0 0 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+}
+
+.sns {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.sns a { color: var(--paper-deep); }
+
+.copyright {
+  margin: 0;
+  color: #a08d7d;
+  font-size: 0.75rem;
+}
+
+/* ------------------------------------------------------------------
+   スマートフォン
+   ------------------------------------------------------------------ */
+@media (max-width: 34rem) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  .hero { padding-top: 2rem; padding-bottom: 3rem; }
+  .section { padding: 2.5rem 1.25rem; }
+}
